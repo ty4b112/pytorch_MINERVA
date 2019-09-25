@@ -112,11 +112,9 @@ class Data_loader():
         return np.array(self.train_data, dtype=np.int64)
 
     def get_test_graph_data(self):
-        data = copy.deepcopy(self.train_data)
-        data.extend(self.test_data)
         with open(os.path.join(self.option.this_expsdir, "test_log.txt"), "a+", encoding='UTF-8') as f:
-            f.write("Test graph contains " + str(len(data)) + " triples\n")
-        return np.array(data, dtype=np.int64)
+            f.write("Test graph contains " + str(len(self.train_data)) + " triples\n")
+        return np.array(self.train_data, dtype=np.int64)
 
     def get_test_data(self):
         with open(os.path.join(self.option.this_expsdir, "test_log.txt"), "a+", encoding='UTF-8') as f:
